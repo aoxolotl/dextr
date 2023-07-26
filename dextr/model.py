@@ -44,6 +44,7 @@ class _DextrInferenceDataset (torch.utils.data.Dataset):
                 len(images), len(object_extreme_points)
             ))
         self.images = images
+        print('images', self.images.shape)
         self.object_extreme_points = object_extreme_points
         self.transform = transform
         self.image_sizes = []
