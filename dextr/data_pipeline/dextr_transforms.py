@@ -344,6 +344,7 @@ class DextrCropWithHeatmapTransform (object):
 
 class DextrToTensor (object):
     def __call__(self, sample):
+        print('sample', sample['input'].shape)
         input_pil = sample['input']
         heatmap = sample['heatmap']
 
@@ -361,7 +362,7 @@ class DextrToTensor (object):
 
         if 'crop_yx' in sample:
             out_sample['crop_yx'] = torch.tensor(sample['crop_yx'], dtype=torch.float)
-
+        print('outsample', out_sample['input'].shape)
         return out_sample
 
 
