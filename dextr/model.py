@@ -112,6 +112,7 @@ class DextrModel (object):
         loader = torch.utils.data.DataLoader(ds, batch_size=batch_size, num_workers=num_workers)
         sample_i = 0
         predictions = []
+        print('version', torch.__version__)
         with torch.no_grad():
             for batch in loader:
                 input = batch['input'].to(torch_device)
