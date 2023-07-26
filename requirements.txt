@@ -2,5 +2,5 @@ numpy
 scipy
 Pillow
 scikit-image
-torch
+torch==1.7.0
 torchvision
