@@ -403,6 +403,7 @@ class DextrNormalize (object):
     def __call__(self, sample):
         out_sample = sample.copy()
         device = sample['input'].device
+        print('sample', sample['input'].shape)
         out_sample['input'] = (sample['input'] - self.mean.to(device)) / self.std.to(device)
         return out_sample
 
