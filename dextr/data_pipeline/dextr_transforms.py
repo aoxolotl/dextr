@@ -336,6 +336,7 @@ class DextrCropWithHeatmapTransform (object):
         )
 
         out_sample = dict(input=input_dextr_pil, heatmap=heatmap, crop_yx=crop_yx)
+        print('out_sample', out_sample['input'].shape)
 
         if 'target_mask' in sample:
             out_sample['target_mask'] = mask_dextr_pil
