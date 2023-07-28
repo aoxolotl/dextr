@@ -345,7 +345,7 @@ class DextrCropWithHeatmapTransform (object):
 
 class DextrToTensor (object):
     def __call__(self, sample):
-        print('sample', sample['input'].shape)
+        print('sample', sample['input'].size)
         input_pil = sample['input']
         heatmap = sample['heatmap']
 
