@@ -119,6 +119,7 @@ class DextrModel (object):
                 input = batch['input'].to(torch_device)
                 crop_yx = batch['crop_yx'].detach().cpu().numpy()
 
+                print("Running inputs through network...")
                 pred_logits = self.net(input)['out']
 
                 pred_prob = torch.sigmoid(pred_logits).detach().cpu().numpy()
@@ -134,6 +135,7 @@ class DextrModel (object):
 
                     sample_i += 1
 
+        print("All predictions", predictions)
         return predictions
 
     def train(self):
