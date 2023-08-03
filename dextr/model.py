@@ -96,7 +96,7 @@ class DextrModel (object):
             dextr_transforms.DextrNormalize(),
         ])
 
-    def predict(self, images, object_extreme_points, torch_device=None, batch_size=4, num_workers=0):
+    def predict(self, images, object_extreme_points, torch_device="cpu", batch_size=1, num_workers=0):
         """
         Predict DEXTR masks for objects identified in images by extreme points.
 
@@ -113,7 +113,7 @@ class DextrModel (object):
         loader = torch.utils.data.DataLoader(ds, batch_size=batch_size, num_workers=num_workers)
         sample_i = 0
         predictions = []
-        print('version', torch.__version__)
+        print('version', torch.__version__, flush=True)
         with torch.no_grad():
             for batch in loader:
                 input = batch['input'].to(torch_device)
@@ -121,6 +121,7 @@ class DextrModel (object):
 
                 print("Running inputs through network...")
                 pred_logits = self.net(input)['out']
+                print("Model processed inputs")
 
                 pred_prob = torch.sigmoid(pred_logits).detach().cpu().numpy()
 

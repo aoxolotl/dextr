@@ -122,7 +122,9 @@ class DenseUNet(nn.Module):
     def forward(self, x):
         # Apply layers from base_model.features, taking tensors at tap points
         enc_x = []
+        print(f"input_shape:{x.shape}")
         for name, mod in self.base_model.features.named_children():
+            print(f"layer name : {name}")
             if name in self.tap_names:
                 enc_x.append(x)
             x = mod(x)
